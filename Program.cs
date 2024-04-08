@@ -1,4 +1,4 @@
-using djgen.Components;
+using genie.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/akim/projects/blazor/djgen/djgen.csproj",
-      "projectName": "djgen",
-      "projectPath": "/home/akim/projects/blazor/djgen/djgen.csproj",
+      "projectUniqueName": "/home/akim/projects/blazor/genie/genie.csproj",
+      "projectName": "genie",
+      "projectPath": "/home/akim/projects/blazor/genie/genie.csproj",
       "packagesPath": "/home/akim/.nuget/packages/",
-      "outputPath": "/home/akim/projects/blazor/djgen/obj/",
+      "outputPath": "/home/akim/projects/blazor/genie/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/akim/.nuget/NuGet/NuGet.Config"

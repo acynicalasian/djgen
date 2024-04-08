@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VWKJYQx01zwfmvhfYFC71zunt2evKFJC3DYEUuBuepZ0E00c08UVTCNEtIYa6xPWXhpv2wUd1/RlagShmhDwFQ==",
+  "dgSpecHash": "8h3N1kHOtVAZRud/KBVgdKFBazYvWZCZE3JH+Or7BtwWK8oIzGhUgf7dsTzo5diq00Y5NULeuASTqmMIHxC00Q==",
   "success": true,
-  "projectFilePath": "/home/akim/projects/blazor/djgen/djgen.csproj",
+  "projectFilePath": "/home/akim/projects/blazor/genie/genie.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
