@@ -1,1 +1,7 @@
-Download IBM Cloud CLI on laptop. Check: https://github.com/watson-developer-cloud/personality-insights-nodejs?tab=readme-ov-file
+HIGH: Download IBM Cloud CLI on laptop. Check: https://github.com/watson-developer-cloud/personality-insights-nodejs?tab=readme-ov-file
+
+HIGH: Begin implementing Facebook Login.
+
+LOW: Fix navbar bug where if you double click on the anchor links to HOME, ABOUT, etc., the navbar becomes transparent. May have to learn JS for this.
+
+MEDIUM: Finish the bottom of the web page and actually include links/contact info.
