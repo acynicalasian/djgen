@@ -1,14 +1,80 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+
+<!-- This .razor file is based off the default standard App.razor file and off of: -->
+<!-- https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_parallax&stacked=h -->
+
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="/" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="app.css" />
     <link rel="stylesheet" href="genie.styles.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
+    <style>
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+        body, html {
+            height: 100%;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        /* Original value from template: 0.75 */
+        .opacity-mod {opacity: 0.9;}
+
+        .custom-resize {scale: 1.4;}
+
+        .my-padding-fixed {
+            padding-left: 34px;
+            padding-right: 24px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        .genie-area {height: 100vh;}
+
+        /* Create a Parallax Effect */
+        .bgimg-1, .bgimg-2, .bgimg-3 {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* First image (Logo. Full height) */
+        .bgimg-1 {
+            background-image: url('/placeholder/1.jpg');
+            height: 100vh;
+        }
+
+        /* Second image (Portfolio) */
+        .bgimg-2 {
+            background-image: url("/placeholder/2.jpg");
+            height: 30vh;
+        }
+
+        /* Third image (Contact) */
+        .bgimg-3 {
+            background-image: url("/placeholder/3.png");
+            height: 30vh;
+        }
+
+        .w3-wide {letter-spacing: 10px;}
+        .w3-hover-opacity {cursor: pointer;}
+
+        /* Turn off parallax scrolling for tablets and phones */
+        @@media only screen and (max-device-width: 1600px) {
+            .bgimg-1, .bgimg-2, .bgimg-3 {
+                background-attachment: scroll;
+                height: 30vh;
+            }
+        }
+    </style>
     <HeadOutlet />
 </head>
 

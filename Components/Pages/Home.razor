@@ -1,7 +1,92 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Arthur Kim</PageTitle>
 
-<h1>Hello, world!</h1>
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container opacity-mod" id="home">
+  <div class="w3-display-middle" style="white-space:nowrap;">
+    <span class="w3-center my-padding-fixed w3-black w3-xlarge w3-wide w3-animate-opacity">ARTHUR KIM</span>
+  </div>
+</div>
 
-Welcome to your new app.
+<!-- Container (About Section) -->
+<div class="w3-content w3-container w3-padding-64" id="about">
+  <h3 class="w3-center">ABOUT ME</h3>
+  <p class="w3-center"><em>Aspiring software engineer/developer with an academic concentration in NLP.</em></p>
+  <p>Welcome to my website! My name's Arthur Kim and I graduated from UCLA in March of 2024 with a B.A. in Linguistics and Computer Science. My academic experience consists primarily of backend development with a particular focus on NLP, and I'm looking to work as an
+    entry level software engineer/developer. I feel most comfortable programming in Python, C, and Haskell, but I have experience in C++ and shell scripting. This website and webapp serves not only as a portal to my Github and my LinkedIn but also as a live project 
+    in and of itself.</p>
+  <div class="w3-row">
+    <!-- Adding w3-hide-small here should hide this on small devices as well. -->
+    <div class="w3-col m6 w3-center w3-padding-large w3-hide-small">
+      <!-- added custom-resize class to the <p> tag. -->
+      <p class="custom-resize"><b><i class="fa fa-question-circle w3-margin-right"></i>Why did I start this project?</b></p><br>
+      <img src="/placeholder/mini1.gif" class="w3-round w3-image" alt="Insert meme here" width="500" height="333">
+    </div>
+
+    <!-- Hide this text on small devices -->
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+      <p>My goal with this project is to demonstrate a variety of competencies. The underlying web framework for both the website and its integrated webapp is Blazor. I took this opportunity not only to demonstrate my adaptability by learning C# myself and piecing 
+        together a front-end interface, but also to challenge myself to use a back-end language whose paradigms and design choices occupy a middle ground between C/C++ and Python that I'm not always comfortable with. Although I wrote very little HTML of my own for
+        this project, I gained a lot of valuable experience understanding the underlying syntax, semantics, and structure of HTML, CSS, and website design.</p>
+      <p>As of now, I'm in the process of setting up the website itself, but my goal is to learn how to implement OAuth for Facebook (and eventually other social media platforms). I'd like to use Facebook's SDK to scrape user posts and pass them to a backend that's 
+        powered by IBM Watson's Personality Insights service. Based on sentiment analysis, I want to make a "genie" that'll provide whimsical suggestions based on predictions made for mood, hobbies, etc.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Second Parallax Image with Genie Text -->
+<div class="bgimg-2 w3-display-container opacity-mod">
+  <div class="w3-display-middle">
+    <span class="w3-xxlarge w3-text-white w3-wide">GENIE</span>
+  </div>
+</div>
+
+<!-- Container (Genie Section) -->
+<!-- Feel free to get rid of the style attr once the WIP is removed. -->
+<div class="w3-content w3-container w3-padding-64 genie-area" style="position:relative" id="genie">
+  <!-- The following line is just a WIP marker. Feel free to delete this when ready. -->
+  <h1 style="scale:3;position:absolute;top:50%;left:50%;">WIP!</h1>
+  <Genie />
+</div>
+
+<!-- Third Parallax Image with Genie? Text -->
+<div class="bgimg-3 w3-display-container opacity-mod">
+  <div class="w3-display-middle">
+     <span class="w3-xxlarge w3-text-white w3-wide">LINKS</span>
+  </div>
+</div>
+
+<!-- Container (Links Section) -->
+<div class="w3-content w3-container w3-padding-64" id="links">
+  <h3 class="w3-center">WHERE I WORK</h3>
+  <p class="w3-center"><em>I'd love your feedback!</em></p>
+
+  <div class="w3-row w3-padding-32 w3-section">
+    <div class="w3-col m4 w3-container">
+      <img src="/w3images/map.jpg" class="w3-image w3-round" style="width:100%">
+    </div>
+    <div class="w3-col m8 w3-panel">
+      <div class="w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Chicago, US<br>
+        <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +00 151515<br>
+        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: mail@mail.com<br>
+      </div>
+      <p>Swing by for a cup of <i class="fa fa-coffee"></i>, or leave me a note:</p>
+      <form action="/action_page.php" target="_blank">
+        <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+          <div class="w3-half">
+            <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+          </div>
+          <div class="w3-half">
+            <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+          </div>
+        </div>
+        <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+        <button class="w3-button w3-black w3-right w3-section" type="submit">
+          <i class="fa fa-paper-plane"></i> SEND MESSAGE
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
