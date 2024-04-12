@@ -1,43 +1,41 @@
 @inherits LayoutComponentBase
+@inject NavigationManager MyNavMan
 
-<div class="page">
-    <!-- Navbar (sit on top) -->
-    <div class="w3-top">
-        <div class="w3-bar" id="myNavbar">
-            <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
-            <i class="fa fa-bars"></i>
-            </a>
-            <a href="#home" class="w3-bar-item w3-button">HOME</a>
-            <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
-            <a href="#genie" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-magic"></i> GENIE</a>
-            <a href="#links" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-link"></i> LINKS</a>
-        </div>
-
-    <!-- Navbar on small screens -->
-        <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-            <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
-            <a href="#genie" class="w3-bar-item w3-button" onclick="toggleFunction()">GENIE</a>
-            <a href="#links" class="w3-bar-item w3-button" onclick="toggleFunction()">LINKS</a>
-        </div>
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar" id="myNavbar">
+        <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+        <i class="fa fa-bars"></i>
+        </a>
+        <a href="#home" class="w3-bar-item w3-button">HOME</a>
+        <a href="#about" class="w3-bar-item w3-button w3-hide-small" id="aboutbutton"><i class="fa fa-user"></i> ABOUT</a>
+        <a href="#genie" class="w3-bar-item w3-button w3-hide-small" id="geniebutton"><i class="fa fa-magic"></i> GENIE</a>
+        <a href="#links" class="w3-bar-item w3-button w3-hide-small" id="linksbutton"><i class="fa fa-link"></i> LINKS</a>
     </div>
-    <main>
-        @Body
-        <!-- Footer -->
-        <footer class="w3-center w3-black w3-padding-64">
-        <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-        <div class="w3-xlarge w3-section">
-            <i class="fa fa-facebook-official w3-hover-opacity"></i>
-            <i class="fa fa-instagram w3-hover-opacity"></i>
-            <i class="fa fa-snapchat w3-hover-opacity"></i>
-            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-            <i class="fa fa-twitter w3-hover-opacity"></i>
-            <i class="fa fa-linkedin w3-hover-opacity"></i>
-        </div>
-        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-        </footer>
-    </main>
-    
+
+<!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+        <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
+        <a href="#genie" class="w3-bar-item w3-button" onclick="toggleFunction()">GENIE</a>
+        <a href="#links" class="w3-bar-item w3-button" onclick="toggleFunction()">LINKS</a>
+    </div>
 </div>
+
+@Body
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64" id="foot">
+<a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+<div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+</div>
+<p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
 
 <script>
 // Change style of navbar on scroll
@@ -60,4 +58,28 @@ function toggleFunction() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
+
+window.document.getElementById("aboutbutton").addEventListener("click", fixNavBar);
+window.document.getElementById("geniebutton").addEventListener("click", fixNavBar);
+window.document.getElementById("linksbutton").addEventListener("click", fixNavBar);
+function fixNavBar(caller) {
+    if (caller.currentTarget.href === window.location.href) {
+        scrollDestId = caller.currentTarget.id.replace("button", "");
+        // Not sure how many math errors can arrive from half pixels, so let's give an error range of 2? Hopefully this is fine.
+        if (Math.floor(Math.abs(window.document.getElementById(scrollDestId).getBoundingClientRect().y)) <= 2 && scrollDestId != "links") {
+            caller.preventDefault();
+        }
+        else if (scrollDestId == "links") {
+            var linkElem = window.document.getElementById("links");
+            var linksTLCornerTopOffset = linkElem.getBoundingClientRect().y;
+            var footerHeight = window.document.getElementById("foot").offsetHeight;
+            var linksSectionHeight = linkElem.offsetHeight;
+            if (Math.floor(Math.abs(window.innerHeight - linksTLCornerTopOffset - footerHeight - linksSectionHeight)) <= 2)
+            {
+                caller.preventDefault();
+            }
+        }
+    }
+}
+
 </script>
