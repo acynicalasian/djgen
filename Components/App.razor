@@ -24,10 +24,16 @@
             line-height: 1.8;
         }
 
+        html {
+            scroll-snap-type: y proximity;
+        }
+
         /* Original value from template: 0.75 */
         .opacity-mod {opacity: 0.9;}
 
         .custom-resize {scale: 1.4;}
+
+        .snap-child {scroll-snap-align: start;}
 
         .my-padding-fixed {
             padding-left: 34px;
