@@ -1,4 +1,4 @@
-bin
-obj
+bin/*
+obj/*
 Components/App.old.razor
 Components/Layout/MainLayout.old.razor

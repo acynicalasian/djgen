@@ -1,6 +1,10 @@
 ﻿@page "/"
+@inject IJSRuntime JS
 
 <PageTitle>Arthur Kim</PageTitle>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0&appId=828712989097356" nonce="JOoI7z73"></script>
 
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container opacity-mod" id="home">
@@ -43,11 +47,25 @@
 </div>
 
 <!-- Container (Genie Section) -->
-<!-- Feel free to get rid of the style attr once the WIP is removed. -->
-<div class="w3-content w3-container w3-padding-64 genie-area snap-child" style="position:relative" id="genie">
-  <!-- The following line is just a WIP marker. Feel free to delete this when ready. -->
-  <h1 style="scale:3;position:absolute;top:50%;left:50%;">WIP!</h1>
-  <Genie />
+<div class="w3-content w3-container w3-padding-64 genie-area snap-child" id="genie">
+  <!-- What I'm *trying* to do: check page state to see which component to load -->
+  <script>
+    window.getFBLoginStatus = () => {
+      return FB.getLoginStatus(function(response) { return response.status; });
+    };
+  </script>
+  @code {
+    private string fbLoginStatus = string.Empty;
+    private async Task GetLoginStatus() {
+      fbLoginStatus = new(await JS.InvokeAsync<string>("getFBLoginStatus"));
+    }
+  }
+  <!-- TODO: Figure out how to conditionally render each component. Do I need DynamicComponent? -->
+  @if (fbLoginStatus == "connected") {
+    <Components.Pages.Genie />
+  } else {
+    <Components.Pages.FBLogin />
+  }
 </div>
 
 <!-- Third Parallax Image with Genie? Text -->

@@ -1,8 +1,8 @@
 HIGH: Download IBM Cloud CLI on laptop. Check: https://github.com/watson-developer-cloud/personality-insights-nodejs?tab=readme-ov-file
 
-HIGH: Look into hosting Stable Diffusion on my own web server, or look into an affordable paid Stable Diffusion API.
+HIGH: Figure out conditional rendering of components.
 
-HIGH: Implement scroll snapping.
+MEDIUM: Look into hosting Stable Diffusion on my own web server, or look into an affordable paid Stable Diffusion API.
 
 MEDIUM: Finish the bottom of the web page and actually include links/contact info.
 
