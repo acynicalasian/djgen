@@ -2,7 +2,7 @@ HIGH: Download IBM Cloud CLI on laptop. Check: https://github.com/watson-develop
 
 HIGH: Figure out conditional rendering of components.
 
-MEDIUM: Look into hosting Stable Diffusion on my own web server, or look into an affordable paid Stable Diffusion API.
+HIGH: Figure out how JS async and FB API work. It seems as if FB JS API isn't loading on page load? Or am I confused?
 
 MEDIUM: Finish the bottom of the web page and actually include links/contact info.
 
