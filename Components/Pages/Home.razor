@@ -3,8 +3,32 @@
 
 <PageTitle>Arthur Kim</PageTitle>
 
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0&appId=828712989097356" nonce="JOoI7z73"></script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '828712989097356',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v19.0'
+    });
+
+    // Addition to default code from FB: force run FB.getLoginStatus() here to store info in sessionStorage so we can use it later
+    FB.getLoginStatus(function(response) {
+      window.sessionStorage.fbLoginStatus = response.status;
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container opacity-mod" id="home">
@@ -48,23 +72,23 @@
 
 <!-- Container (Genie Section) -->
 <div class="w3-content w3-container w3-padding-64 genie-area snap-child" id="genie">
-  <!-- What I'm *trying* to do: check page state to see which component to load -->
-  <script>
-    window.getFBLoginStatus = () => {
-      return FB.getLoginStatus(function(response) { return response.status; });
-    };
-  </script>
   @code {
-    private string fbLoginStatus = string.Empty;
-    private async Task GetLoginStatus() {
-      fbLoginStatus = new(await JS.InvokeAsync<string>("getFBLoginStatus"));
+    private string? fbLoginStatus;
+    [JSInvokable]
+    public void SetFBLoginStatusField(string s) {
+      fbLoginStatus = s;
     }
   }
-  <!-- TODO: Figure out how to conditionally render each component. Do I need DynamicComponent? -->
+  <script>
+    // Use .NET interop in JS to set C# variable value
+    DotNet.invokeMethod("Home", "SetFBLoginStatusField", window.sessionStorage.fbLoginStatus);
+  </script>
   @if (fbLoginStatus == "connected") {
-    <Components.Pages.Genie />
+    <p>CONNECTED!!</p>
+  } else if (fbLoginStatus == "not_authorized") {
+    <p>NOT AUTHORIZED!!</p>
   } else {
-    <Components.Pages.FBLogin />
+    <p>UNKNOWN!!</p>
   }
 </div>
 
