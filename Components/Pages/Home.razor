@@ -14,7 +14,10 @@
 
     // Addition to default code from FB: force run FB.getLoginStatus() here to store info in sessionStorage so we can use it later
     FB.getLoginStatus(function(response) {
-      window.sessionStorage.fbLoginStatus = response.status;
+      window.fbLoginStatus = response.status;
+      window.fnGetFBLoginStatus = () => {
+        return window.fbLoginStatus;
+      };
     });
       
     FB.AppEvents.logPageView();   
@@ -72,23 +75,23 @@
 
 <!-- Container (Genie Section) -->
 <div class="w3-content w3-container w3-padding-64 genie-area snap-child" id="genie">
-  @code {
-    private string? fbLoginStatus;
-    [JSInvokable]
-    public void SetFBLoginStatusField(string s) {
-      fbLoginStatus = s;
-    }
-  }
   <script>
-    // Use .NET interop in JS to set C# variable value
-    DotNet.invokeMethod("Home", "SetFBLoginStatusField", window.sessionStorage.fbLoginStatus);
+    window.setTestElement = (element, text) => {
+      element.innerText = text;
+    };
   </script>
-  @if (fbLoginStatus == "connected") {
-    <p>CONNECTED!!</p>
-  } else if (fbLoginStatus == "not_authorized") {
-    <p>NOT AUTHORIZED!!</p>
-  } else {
-    <p>UNKNOWN!!</p>
+  <p @ref="testelem">IT DIDN'T WORK!</p>
+  @code {
+    private string? strFBLoginStatus = "";
+    private ElementReference testelem;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender) {
+      var foo = await JS.InvokeAsync<string>("fbGetFBLoginStatus");
+      strFBLoginStatus = foo;
+        
+      await JS.InvokeVoidAsync("setTestElement", testelem, "IT WORKED. OUR STATUS IS " + strFBLoginStatus);
+      StateHasChanged();
+    }
   }
 </div>
 
